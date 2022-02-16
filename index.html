@@ -24,19 +24,24 @@
                 </div>
 
                 <div class="bg-slate-100 ">
+                    <!-- Income------------------------ -->
+
                     <h2 class="text-center text-2xl font-semibold text-black-900 my-4">Income</h2>
-                    <p class="text-center">Income : <span><input type="text"></span></p>
+                    <p class="text-center">Income : <span><input id="total-income" type="number"></span></p>
+
+                    <!-- Expenses--------------------------------- -->
+
                     <h2 class="text-center text-2xl font-semibold text-black-900 my-4">Expenses</h2>
-                    <p class="text-center my-3">Food : <span><input type="text"></span></p>
-                    <p class="text-center my-3">Rent : <span><input type="text"></span></p>
-                    <p class="text-center my-3">Clothes : <span><input type="text"></span></p>
+                    <p class="text-center my-3">Food : <span><input id="food-expenses" type="text"></span></p>
+                    <p class="text-center my-3">Rent : <span><input id="rent-expenses" type="text"></span></p>
+                    <p class="text-center my-3">Clothes : <span><input id="clothes-expenses" type="text"></span></p>
                     <p class="text-center">
-                        <button
+                        <button onclick="calculateTotal()"
                             class="rounded-none bg-green-400 text-zinc-50 text-xl font-semibold px-4 py-2 mb-4">Calculate
                         </button>
                     </p>
                     <h3 class="text-center text-xl font-medium text-black-900 my-4">Total Expenses:
-                        $<span>500</span>
+                        $<span id="total-expances">500</span>
                     </h3>
                     <h3 class="text-center text-xl font-medium text-black-900 my-4">Balance: $<span>500</span>
                     </h3>
@@ -49,7 +54,7 @@
                         $<span>2000</span>
                     </h3>
                     <h3 class="text-center text-xl font-medium text-black-900 my-4">Remaining Balance:
-                        $<span>2500</span>
+                        $<span id="the-balance">2500</span>
                     </h3>
 
 
@@ -59,6 +64,7 @@
 
         </section>
     </main>
+    <script src="js/app.js"></script>
 </body>
 
 </html>
