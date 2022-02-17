@@ -1,26 +1,37 @@
+function theErrorForExpances(inputFieldName) {
+    if (isNaN(inputFieldName)) {
+        return alert('You can input only valid number!!!')
+    }
+}
+
 // Calculating expances and getting balance after expances 
 function calculateTotal() {
     const foodExpances = document.getElementById('food-expenses').value;
     const rentExpances = document.getElementById('rent-expenses').value;
-    const clothingExoances = document.getElementById('clothes-expenses').value;
+    const clothingExpances = document.getElementById('clothes-expenses').value;
+    //    Error messages ---------------------
+    theErrorForExpances(foodExpances);
+    theErrorForExpances(rentExpances);
+    theErrorForExpances(clothingExpances);
+
     // Getting total expances ----------------
-    const totalExpancesInSum = parseInt(foodExpances) + parseInt(rentExpances) + parseInt(clothingExoances);
+    const sumOfTotalExpances = parseInt(foodExpances) + parseInt(rentExpances) + parseInt(clothingExpances);
     const totalExpance = document.getElementById('total-expances');
-    totalExpance.innerText = totalExpancesInSum;
+    totalExpance.innerText = sumOfTotalExpances;
     const totalIncomeInput = document.getElementById('total-income');
     const totalIncomeInputValue = totalIncomeInput.value;
-    // Condition for minus Value ---------
-    if (totalExpancesInSum > totalIncomeInputValue) {
-        document.getElementById('total-income').style.backgroundColor = 'red';
-        document.getElementById('remaining-balance').style.backgroundColor = 'red';
-
+    if (totalIncomeInputValue < 0) {
+        return alert("You shouldn't enter a negetive value as an income input!!!")
+    }
+    // Condition for, if expnace Value more than your income ---------
+    if (sumOfTotalExpances > totalIncomeInputValue) {
+        return alert("You shouldn't spand more than you earn!!!!")
     }
     const balanceInput = document.getElementById('remaining-balance');
     const balanceInputValue = balanceInput.innerText;
-    const gettingBalance = parseInt(totalIncomeInputValue) - parseInt(totalExpancesInSum);
+    const gettingBalance = parseInt(totalIncomeInputValue) - parseInt(sumOfTotalExpances);
     balanceInput.innerText = gettingBalance;
     // reset inputfield ----------------
-    // totalIncomeInput.value = '';
     document.getElementById('food-expenses').value = '';
     document.getElementById('rent-expenses').value = '';
     document.getElementById('clothes-expenses').value = '';
@@ -29,22 +40,28 @@ function calculateTotal() {
 function getSavingMoney() {
     const totalIncomeInput = document.getElementById('total-income');
     const totalIncomeInputValue = parseInt(totalIncomeInput.value);
-    const inputBox = document.getElementById('input-parcentage');
-    const inputboxvalue = parseInt(inputBox.value);
+    const parcentageInputBox = document.getElementById('input-parcentage');
+    const parcentageInputboxvalue = parseInt(parcentageInputBox.value);
+    if (isNaN(parcentageInputboxvalue)) {
+        return alert('Please enter a valid number!!!')
+    }
     const savingAmountText = document.getElementById('saving-amount');
     const savingAmountInValue = savingAmountText.innerText;
-    const theSaving = (totalIncomeInputValue * inputboxvalue) / 100;
+    const theSaving = (totalIncomeInputValue * parcentageInputboxvalue) / 100;
     savingAmountText.innerText = theSaving;
     // gettingBalance -------------------------
-    const previousBalance = document.getElementById('remaining-balance');
-    const previousBalanceValue = parseInt(previousBalance.innerText);
+    const balanceAfterExpanceInText = document.getElementById('remaining-balance');
+    const balanceAfterExpanceInValue = parseInt(balanceAfterExpanceInText.innerText);
     const balanceAfterSaving = document.getElementById('balance-after-saving');
-    const balanceAterSavingValue = parseInt(balanceAfterSaving.innerText);
+    const balanceAfterSavingValue = parseInt(balanceAfterSaving.innerText);
+    if (parseInt(balanceAfterSaving.innerText) < 0) {
+        return alert("Your saving shouldn't more than your balance!!!")
+    }
     // Getting remaining balance -----------------
-    const theRemainingBalance = previousBalanceValue - theSaving;
+    const theRemainingBalance = balanceAfterExpanceInValue - theSaving;
     balanceAfterSaving.innerText = theRemainingBalance;
     // reset input field -----------------
-    inputBox.value = '';
+    parcentageInputBox.value = '';
 }
 
 
