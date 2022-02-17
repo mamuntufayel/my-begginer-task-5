@@ -54,7 +54,7 @@ function getSavingMoney() {
     const balanceAfterExpanceInValue = parseInt(balanceAfterExpanceInText.innerText);
     const balanceAfterSaving = document.getElementById('balance-after-saving');
     const balanceAfterSavingValue = parseInt(balanceAfterSaving.innerText);
-    if (parseInt(balanceAfterSaving.innerText) < 0) {
+    if (balanceAfterExpanceInValue < theSaving) {
         return alert("Your saving shouldn't more than your balance!!!")
     }
     // Getting remaining balance -----------------
